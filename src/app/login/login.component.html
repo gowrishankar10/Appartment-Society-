@@ -10,10 +10,20 @@
       <div class="container">
         <div class="screen">
           <div class="screen__content">
-            <form class="login">
+            <form [formGroup]="loginForm" (submit)="onSubmit()" class="login">
               <div class="login__field">
                 <i class="login__icon fas fa-user"></i>
-                <input type="text" class="login__input" placeholder="Email" />
+                <input
+                  type="text"
+                  class="login__input"
+                  placeholder="Email"
+                  formControlName="email"
+                />
+                <div *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+                  <div *ngIf="email?.errors?.['required']">
+                    email is required.
+                  </div>
+                </div>
               </div>
               <div class="login__field">
                 <i class="login__icon fas fa-lock"></i>
@@ -21,12 +31,27 @@
                   type="password"
                   class="login__input"
                   placeholder="Password"
+                  formControlName="password"
                 />
+                <div
+                  *ngIf="
+                    password?.invalid && (password?.dirty || password?.touched)
+                  "
+                >
+                  <div *ngIf="password?.errors?.['required']">
+                    password is required.
+                  </div>
+                </div>
               </div>
-              <button class="button login__submit">
+              <button
+                [disabled]="!loginForm.valid"
+                type="submit"
+                class="button login__submit"
+              >
                 <span class="button__text">Log In Now</span>
                 <i class="button__icon fas fa-chevron-right"></i>
               </button>
+              {{ error }}
             </form>
             <div class="social-login">
               <h3>log in via</h3>

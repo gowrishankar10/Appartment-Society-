@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -12,13 +13,12 @@ export class LoginService {
   private readonly loginPatah = 'admin/login';
   private readonly blocksPath = 'dashboard/getallblocks';
 
-  token = JSON.parse(localStorage.getItem('token') || '');
+  loginError = new Subject();
 
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
-    'X_ACCESS_TOKEN':  `  Bearer ${this.token}`
+    X_ACCESS_TOKEN: `  Bearer ${JSON.parse(localStorage.getItem('token') || '')}`,
   });
-
 
   options = { headers: this.headers };
 
@@ -27,7 +27,7 @@ export class LoginService {
       email: email,
       password: password,
     };
-    this.http
+    return this.http
       .post(`${this.basePath}${this.loginPatah}`, credentialBody)
       .subscribe((res: any) => {
         if (res.message === 'Success') {
@@ -37,6 +37,8 @@ export class LoginService {
           );
           this.router.navigateByUrl('dashboard');
           console.log(localStorage.getItem('token'));
+        } else {
+          this.loginError.next(res.message);
         }
       });
   }

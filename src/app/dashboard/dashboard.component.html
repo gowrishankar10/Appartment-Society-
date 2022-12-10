@@ -74,7 +74,6 @@
           <br />
           <select
             [(ngModel)]="selectedValue"
-            (ngModelChange)="onSelectChange($event)"
           >
           <option  value="" selected="selected">none</option>
             <option *ngFor="let item of allSociety" [ngValue]="item">

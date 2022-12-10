@@ -18,8 +18,4 @@ export class DashboardComponent implements OnInit {
       console.log(res);
     });
   }
-
-  onSelectChange(value: any) {
-    console.log(value);
-  }
 }
