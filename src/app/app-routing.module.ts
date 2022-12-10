@@ -4,13 +4,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  
-  {path: 'login',component:LoginComponent},
-  {path: 'dashboard',component:DashboardComponent}];
-
+  { path: 'login', component: LoginComponent },
+  { path: 'dashboard', component: DashboardComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

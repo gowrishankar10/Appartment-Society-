@@ -1,156 +1,156 @@
+<body>
+  <div id="mySidenav" class="sidenav">
+    <p class="logo"><span></span>Admin</p>
+    <a href="./img/blue.jpg"></a>
+    <a href="#" class="icon-a"
+      ><i class="fa fa-dashboard icons"></i> Dashboard</a
+    >
+    <a href="profile.html" class="icon-a"
+      ><i class="fa fa-users icons"></i> Profiles</a
+    >
+    <a href="#" class="icon-a"><i class="fa fa-list icons"></i> Society</a>
+    <a href="#" class="icon-a"
+      ><i class="bi bi-buildings-fill icons"></i> Blocks</a
+    >
+    <a href="#" class="icon-a"><i class="fa fa-tasks icons"></i> Flats</a>
+    <a href="#" class="icon-a"><i class="fa fa-user icons"></i> Visitors</a>
+    <a href="#" class="icon-a"><i class="fa fa-list-alt icons"></i> Tickets</a>
+  </div>
+  <div id="main">
+    <div class="head">
+      <div class="col-div-6">
+        <span style="font-size: 30px; cursor: pointer; color: white" class="nav"
+          >☰ Dashboard</span
+        >
+        <span
+          style="font-size: 30px; cursor: pointer; color: white"
+          class="nav2"
+          >☰ Admin</span
+        >
+      </div>
 
+      <div class="col-div-6">
+        <div class="profile">
+          <img src="images/user.png" class="pro-img" />
+          <p>Admin<span>Admin</span></p>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
 
+    <div class="clearfix"></div>
+    <br />
 
+    <div class="col-div-3">
+      <div class="box">
+        <p>67<br /><span>Toal Blocks</span></p>
+        <i class="bi bi-buildings-fill"></i>
+      </div>
+    </div>
+    <div class="col-div-3">
+      <div class="box">
+        <p>88<br /><span>Totals Flats</span></p>
+        <i class="fa fa-list box-icon"></i>
+      </div>
+    </div>
+    <div class="col-div-3">
+      <div class="box">
+        <p>99<br /><span>Active Tickets</span></p>
+        <i class="fa fa-ticket" style="font-size: 48px; color: red"></i>
+      </div>
+    </div>
+    <div class="col-div-3">
+      <div class="box">
+        <p>78<br /><span>Tasks</span></p>
+        <i class="fa fa-tasks box-icon"></i>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+    <br /><br />
+    <div class="col-div-8">
+      <div class="box-8">
+        <div class="content-box">
+          <p>Transaction History <span>Sell All</span></p>
+          <br />
+          <select
+            [(ngModel)]="selectedValue"
+            (ngModelChange)="onSelectChange($event)"
+          >
+          <option  value="" selected="selected">none</option>
+            <option *ngFor="let item of allSociety" [ngValue]="item">
+              {{ item.blockname }}
+            </option>
+          </select>
+          <table>
+            <tr>
+              <th>Block</th>
+              <th>Society Name</th>
+              <th>Pin Code</th>
+              <th>City</th>
+              <th>State</th>
+            </tr>
+            <tr *ngIf="selectedValue?.searchSociety as searchSociety">
+              <td>{{ selectedValue?.blockname }}</td>
+              <td>{{ searchSociety?.societyname }}</td>
+              <ng-container *ngIf="searchSociety?.pincodeModel as pincodeModel">
+                <td>{{ pincodeModel?.pincodeNumber }}</td>
+                <ng-container *ngIf="pincodeModel?.cityEntity as cityEntity" >
+                  <td>{{ cityEntity?.cityname }}</td>
+                  <td>{{ cityEntity?.stateEntity?.statename }}</td>
+                </ng-container>
+              </ng-container>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
 
-	<body>
-		
-		<div id="mySidenav" class="sidenav">
-		<p class="logo"><span></span>Admin</p>
-		<a href="./img/blue.jpg"></a>
-	  <a href="#" class="icon-a"><i class="fa fa-dashboard icons"></i>   Dashboard</a>
-	  <a href="profile.html"class="icon-a"><i class="fa fa-users icons"></i>   Profiles</a>
-	  <a href="#"class="icon-a"><i class="fa fa-list icons"></i>   Society</a>
-	  <a href="#"class="icon-a"><i class="bi bi-buildings-fill icons"></i>  Blocks</a>
-	  <a href="#"class="icon-a"><i class="fa fa-tasks icons"></i>   Flats</a>
-	  <a href="#"class="icon-a"><i class="fa fa-user icons"></i>   Visitors</a>
-	  <a href="#"class="icon-a"><i class="fa fa-list-alt icons"></i>   Tickets</a>
+    <div class="col-div-4">
+      <div class="box-4">
+        <div class="content-box">
+          <p>Total Occupied<span>Sell All</span></p>
 
-	</div>
-	<div id="main">
+          <div class="circle-wrap">
+            <div class="circle">
+              <div class="mask full">
+                <div class="fill"></div>
+              </div>
+              <div class="mask half">
+                <div class="fill"></div>
+              </div>
+              <div class="inside-circle">70%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-		<div class="head">
-			<div class="col-div-6">
-	<span style="font-size:30px;cursor:pointer; color: white;" class="nav"  >☰ Dashboard</span>
-	<span style="font-size:30px;cursor:pointer; color: white;" class="nav2"  >☰ Admin</span>
-	</div>
-		
-		<div class="col-div-6">
-		<div class="profile">
+    <div class="clearfix"></div>
+  </div>
 
-			<img src="images/user.png" class="pro-img" />
-			<p>Admin<span>Admin</span></p>
-		</div>
-	</div>
-		<div class="clearfix"></div>
-	</div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(".nav").click(function () {
+      $("#mySidenav").css("width", "70px");
+      $("#main").css("margin-left", "70px");
+      $(".logo").css("visibility", "hidden");
+      $(".logo span").css("visibility", "visible");
+      $(".logo span").css("margin-left", "-10px");
+      $(".icon-a").css("visibility", "hidden");
+      $(".icons").css("visibility", "visible");
+      $(".icons").css("margin-left", "-8px");
+      $(".nav").css("display", "none");
+      $(".nav2").css("display", "block");
+    });
 
-		<div class="clearfix"></div>
-		<br/>
-		
-		<div class="col-div-3">
-			<div class="box">
-				<p>67<br/><span>Toal Blocks</span></p>
-				<i class="bi bi-buildings-fill"></i>
-			</div>
-		</div>
-		<div class="col-div-3">
-			<div class="box">
-				<p>88<br/><span>Totals Flats</span></p>
-				<i class="fa fa-list box-icon"></i>
-			</div>
-		</div>
-		<div class="col-div-3">
-			<div class="box">
-				<p>99<br/><span>Active Tickets</span></p>
-				<i class="fa fa-ticket" style="font-size:48px;color:red"></i>
-			</div>
-		</div>
-		<div class="col-div-3">
-			<div class="box">
-				<p>78<br/><span>Tasks</span></p>
-				<i class="fa fa-tasks box-icon"></i>
-			</div>
-		</div>
-		<div class="clearfix"></div>
-		<br/><br/>
-		<div class="col-div-8">
-			<div class="box-8">
-			<div class="content-box">
-				<p>Transaction History <span>Sell All</span></p>
-				<br/>
-				<table>
-	  <tr>
-	    <th>Trasanction Id </th>
-	    <th>Name</th>
-		<th>Mobile Number</th>
-	    <th>Payment Mode </th>
-		<th>Trasanction Date Time </th>
-	    <th>Ammount</th>
-	    <th> Status </th>
-		
-	  </tr>
-	  <tr>
-	    <td>Tr123456789 </td>
-	    <td>Gowri Shankar Anders</td>
-		<td>9845612365</td>
-	    <td>Card</td>
-		<td>10-12-2022 </td>
-	    <td> 2000</td>
-	    <td>Success</td>
-	  </tr>
-	 
-	  
-	  
-	</table>
-			</div>
-		</div>
-		</div>
-
-		<div class="col-div-4">
-			<div class="box-4">
-			<div class="content-box">
-				<p>Total Occupied<span>Sell All</span></p>
-
-				<div class="circle-wrap">
-	    <div class="circle">
-	      <div class="mask full">
-	        <div class="fill"></div>
-	      </div>
-	      <div class="mask half">
-	        <div class="fill"></div>
-	      </div>
-	      <div class="inside-circle"> 70% </div>
-	    </div>
-		
-	  </div>
-			</div>
-			
-		</div>
-		
-		</div>
-			
-		<div class="clearfix"></div>
-		
-	</div>
-
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script>
-
-	  $(".nav").click(function(){
-	    $("#mySidenav").css('width','70px');
-	    $("#main").css('margin-left','70px');
-	    $(".logo").css('visibility', 'hidden');
-	    $(".logo span").css('visibility', 'visible');
-	     $(".logo span").css('margin-left', '-10px');
-	     $(".icon-a").css('visibility', 'hidden');
-	     $(".icons").css('visibility', 'visible');
-	     $(".icons").css('margin-left', '-8px');
-	      $(".nav").css('display','none');
-	      $(".nav2").css('display','block');
-	  });
-
-	$(".nav2").click(function(){
-	    $("#mySidenav").css('width','300px');
-	    $("#main").css('margin-left','300px');
-	    $(".logo").css('visibility', 'visible');
-	     $(".icon-a").css('visibility', 'visible');
-	     $(".icons").css('visibility', 'visible');
-	     $(".nav").css('display','block');
-	      $(".nav2").css('display','none');
-	 });
-
-	</script>
-
-	</body>
-
+    $(".nav2").click(function () {
+      $("#mySidenav").css("width", "300px");
+      $("#main").css("margin-left", "300px");
+      $(".logo").css("visibility", "visible");
+      $(".icon-a").css("visibility", "visible");
+      $(".icons").css("visibility", "visible");
+      $(".nav").css("display", "block");
+      $(".nav2").css("display", "none");
+    });
+  </script>
+</body>
